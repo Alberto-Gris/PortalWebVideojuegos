@@ -43,9 +43,25 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }, 1500);
   }, []);
 
-  const loginWithEmailPassword = (email: string, password: string) => {
-    setUser({ name: "Alberto Hernandez", email: email });
-    setStatus(AuthStatus.authenticated);
+  const loginWithEmailPassword = async (email: string, password: string) => {
+    try {
+      const response = await fetch("/data/users.json"); // Cargar JSON simulado
+      const users = await response.json();
+
+      // Buscar usuario en la "base de datos"
+      const foundUser = users.find(
+        (u: any) => u.email === email && u.password === password
+      );
+
+      if (foundUser) {
+        setUser({ name: foundUser.name, email: foundUser.email });
+        setStatus(AuthStatus.authenticated);
+      } else {
+        setStatus(AuthStatus.unauthenticated);
+      }
+    } catch (error) {
+      console.error("Error al cargar los datos:", error);
+    }
   };
 
   const logout = () => {
