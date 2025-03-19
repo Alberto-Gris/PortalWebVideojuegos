@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import Home from "./Home";
 
 const LoginPage = () => {
@@ -11,6 +10,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     loginWithEmailPassword(email, password);
+    console.log("hola");
   };
 
   useEffect(() => {

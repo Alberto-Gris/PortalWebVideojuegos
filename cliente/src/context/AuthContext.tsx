@@ -45,24 +45,33 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginWithEmailPassword = async (email: string, password: string) => {
     try {
-      const response = await fetch("/data/users.json"); // Cargar JSON simulado
-      const users = await response.json();
-
-      // Buscar usuario en la "base de datos"
-      const foundUser = users.find(
-        (u: any) => u.email === email && u.password === password
-      );
-
-      if (foundUser) {
-        setUser({ name: foundUser.name, email: foundUser.email });
-        setStatus(AuthStatus.authenticated);
-      } else {
-        setStatus(AuthStatus.unauthenticated);
+      const response = await fetch("http://127.0.0.1:8000/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });      
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Credenciales incorrectas o error en la conexión");
       }
+  
+      const data = await response.json();
+      console.log(data)
+      //const { token, user } = data;
+  
+      //localStorage.setItem("authToken", token);
+      //setUser({ name: user.name, email: user.email });
+      setStatus(AuthStatus.authenticated);
+      console.log("estamos adentro");
     } catch (error) {
-      console.error("Error al cargar los datos:", error);
+      console.error("Error al intentar iniciar sesión:", error);
+      setStatus(AuthStatus.unauthenticated);
     }
   };
+   
 
   const logout = () => {
     setUser(undefined);
