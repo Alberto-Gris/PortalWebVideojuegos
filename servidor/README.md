@@ -56,6 +56,16 @@ Instalamos las dependencias necesarias con el comando:
 pipenv install
 ```
 
+En caso de que no se lleguen a instalar bcrypt y/o pytest, se pueden instalar manualmente con los comandos:
+
+```bash
+pip install bcrypt
+```
+
+```bash
+pip install pytest
+```
+
 ### 4. Ejecutamos el servidor
 
 Una vez que hayas instalado todas las dependencias, puedes ejecutar el servidor el siguiente comando:
@@ -67,3 +77,30 @@ uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 - **--host 127.0.0.1** : Establece que el servidor escuche en localhost, lo cual es adecuado para desarrollo local.
 - **--port 8000** : El servidor correrá en el puerto 8000. Puedes cambiar este puerto si lo necesitas.
 - **--reload**: Este flag permite la recarga automática del servidor cada vez que hagas cambios en el código, lo cual es útil durante el desarrollo.
+
+### 5. Pruebas unitarias
+
+Para definir las pruebas unitarias que se quieren hacer se necesita un archivo ***.py** donde éstas se definan.
+
+Se recomienda crear un archivo de pruebas para cada archivo con funciones que queramos probar, en el formato de **test_<archivo_original>.py** Un ejemplo de esto es el archivo **test_main.py** que se encuentra en la raíz.
+
+En estos archivos se necesita importar la biblioteca de **pytest**, además del archivo de donde se obtendrá la función original (en este caso, **main**), definir las funciones, una para cada prueba unitaria, y usar el comando **assert** para definir la condición que se espera recibir (con respuesta booleana).
+
+A continuación se muestra el ejemplo de **test_main.py**:
+
+```bash
+import pytest
+import main
+
+def test_verify_password():
+    # Devuelve un booleano: si es True, pasa la prueba
+    assert main.verify_password("hola123", "$2b$12$...") == True
+```
+
+Para ejecutar las pruebas de un archivo, en una terminal (diferente a la que está ejecutando el servidor del paso anterior) ejecutar el comando:
+
+```bash
+pytest ./test_<archivo_original>.py
+```
+
+Como respuesta aparecerán los tests, cada uno seguido de las advertencias que puedan generar, y por último la cantidad de pruebas aprobadas, reprobadas y el total de advertencias.
