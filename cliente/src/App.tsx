@@ -1,15 +1,23 @@
-import LoginPage from "./components/LoginPage";
-import Navbar from "./components/Navbar";
-import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Catalogo from './components/Catalogo';
+import Home from './components/Home';
+import Ayuda from './components/Ayuda';
+import Juego from './components/Juego';
+import Tutorial from './components/Tutorial';
 
 function App() {
   return (
-    <>
-      <AuthProvider>
-        <Navbar></Navbar>
-        <LoginPage></LoginPage>
-      </AuthProvider>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/juego/:id" element={<Juego />} />
+        <Route path="/tutorial/:id" element={<Tutorial />} />
+        <Route path="/ayuda" element={<Ayuda />} />
+      </Routes>
+    </Router>
   );
 }
 
