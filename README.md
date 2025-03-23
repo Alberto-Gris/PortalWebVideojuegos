@@ -1,54 +1,51 @@
-# Instalación + Inicio Rápido del Proyecto para el Portal de Videojuegos
+# Portal de Videojuegos - Instalación y Inicio Rápido
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto consiste en un portal web de videojuegos con un frontend en React y un backend en Python. A continuación, se detallan los pasos para configurar y ejecutar el proyecto.
 
-Currently, two official plugins are available:
+## Requisitos Previos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (v22 o superior) para el cliente.
+- Python (v3 creo) para el servidor.
+- Git instalado.
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Clona el repositorio
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Para obtener el código fuente, clona el repositorio usando el siguiente comando:
+
+```bash
+git clone https://github.com/Alberto-Gris/PortalWebVideojuegos
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Configuración del Cliente
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+#### 1.- Dirigete a la carpeta del cliente:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+cd cliente
 ```
+
+#### 2.- Instala las dependencias:
+
+```bash
+npm install
+```
+
+#### 3.- Inicia el servidor:
+
+```bash
+npm run dev
+```
+
+Para mas informacion sobre el Front consulta el Readme.md ubicado en la carpeta "cliente"
+
+### 3.- Configuración del Servidor
+
+#### 1.- Navega a la carpeta del servidor:
+
+```bash
+cd servidor
+```
+
+#### 2.- Consulta el Readme.md de la carpeta del servidor para mas informacion sobre la instalación
