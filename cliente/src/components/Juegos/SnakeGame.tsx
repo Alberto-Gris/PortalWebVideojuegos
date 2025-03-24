@@ -1,26 +1,36 @@
-// components/SnakeGame.tsx
-import React, { useState, useEffect } from 'react';
+import styles from './Juegos.module.css';
+import snake from '../../assets/snake.png';
+import { BsPlayCircle } from 'react-icons/bs';
 
 const SnakeGame = () => {
-    // Lógica del juego aquí
-    return (
-      <div style={gameContainerStyle}>
-        <h2 style={titleStyle}>Snake</h2>
-        <p>¡Hola! Este es el Juego de Snake.</p>
+  return (
+    <div className={styles.container}>
+      {/* Título */}
+      <h1 className={styles.titulo}>🐍 SNAKE <span className={styles.icono}>🎮</span></h1>
+
+      {/* Sección de la imagen y la descripción */}
+      <div className={styles.contenido}>
+        {/* Enlace a la URL donde está el juego */}
+        <a href="http://localhost:5173/catalogo" target="_blank" rel="noopener noreferrer" className={styles.imagenContainer}>
+          <img src={snake} alt="Snake" className={styles.imagenSnake} />
+          <BsPlayCircle className={styles.playIcon} size={80} color="Red" />
+        </a>
+
+        <div className={styles.descripcionBox}>
+          <h2>Descripción:</h2>
+          <p>¡Bienvenido al clásico juego de Snake! Controla a la serpiente mientras se desliza por el tablero en busca de comida.</p>
+          <ul>
+            <li>🎓 <strong>Cómo Jugar:</strong></li>
+            <li>💠 Usa las flechas de dirección para mover la serpiente.</li>
+            <li>💠 Come la comida para crecer y aumentar tu puntuación.</li>
+            <li>💠 Evita chocar contra los bordes y tu propio cuerpo.</li>
+          </ul>
+          <p>🎯 <strong>Objetivo:</strong> Sobrevive el mayor tiempo posible y consigue la puntuación más alta.</p>
+          <p>¡Diviértete y demuestra tus reflejos! 🐍🔥</p>
+        </div>
       </div>
-    );
-  };
-  
-  const gameContainerStyle: React.CSSProperties = {
-    backgroundColor: '#000',
-    padding: '20px',
-    borderRadius: '10px',
-    color: '#fff'
-  };
-  
-  const titleStyle: React.CSSProperties = {
-    color: '#4CAF50',
-    textAlign: 'center'
-  };
-  
-  export default SnakeGame;
+    </div>
+  );
+};
+
+export default SnakeGame;
