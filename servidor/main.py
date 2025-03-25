@@ -89,3 +89,7 @@ def login_for_access_token(login_request: LoginRequest, db: Session = Depends(ge
         data={"sub": user.email}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
+
+#@app.post("/saveBackground/")
+#def guardarFondo(background: str, db: Session = Depends(get_db)):
+    

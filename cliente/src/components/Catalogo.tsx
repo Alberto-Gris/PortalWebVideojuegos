@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { FaGamepad } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import snake from '../assets/snake.png';
@@ -6,15 +6,16 @@ import tetrix from '../assets/tetrix.png';
 import buscaminas from '../assets/buscaminas.png';
 import fla from '../assets/flappy.png';
 
+import { useBackground } from './BackgroundContext';
 
 const Catalogo = () => {
   // Estilos principales
-  const containerStyle: CSSProperties = {
-    background: 'linear-gradient(to bottom, #BFC0EA, #6365B5)',
-    minHeight: '100vh',
-    padding: '2rem',
-    position: 'relative' 
-  };
+  //const containerStyle: CSSProperties = {
+  //  background: 'linear-gradient(to bottom, #BFC0EA, #6365B5)',
+  //  minHeight: '100vh',
+  //  padding: '2rem',
+  //  position: 'relative' 
+  //};
 
   // Estilos del rectángulo decorativo
   const rectanguloStyle: CSSProperties = {
@@ -136,8 +137,18 @@ const Catalogo = () => {
     transition: 'all 0.3s ease',
   };
 
+  const { fondoIndex, fondos } = useBackground();
+
   return (
-    <div style={containerStyle}>
+    <div
+      className="min-h-screen p-8 flex justify-center items-center transition-all duration-500"
+      style={{
+        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
        {/* Sección de Juegos */}
        <div style={rectanguloStyle}></div>
       <h2 style={titulojuegosStyle}>Juegos disponibles</h2>
