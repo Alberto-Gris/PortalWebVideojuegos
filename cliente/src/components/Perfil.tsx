@@ -1,9 +1,21 @@
-import mariobros from '../assets/mariobros.png';
-import fondoBosque from '../assets/fondoBosque.jpg';
+import { useBackground } from './BackgroundContext';
+
+import perfilMariobros from '../assets/perfilMariobros.png';
 
 const Perfil = () => {
+
+  const { fondoIndex, cambiarFondo, fondos } = useBackground();
+
   return (
-    <div className="bg-gradient-to-b from-[#BFC0EA] to-[#6365B5] min-h-screen p-8 flex justify-center items-center">
+    <div
+      className="min-h-screen p-8 flex justify-center items-center transition-all duration-500"
+      style={{
+        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       
       {/* Rectángulo decorativo */}
       <div className="w-[35px] h-[69px] bg-[#301E59] rounded-[10px] absolute left-[57px] top-[120px]" />
@@ -86,9 +98,10 @@ const Perfil = () => {
               <span className="text-lg font-semibold">Foto de Perfil</span>
               <div className="w-[200px] h-[200px] rounded-lg bg-blue-500 flex justify-center items-center">
                 <img 
-                  src={mariobros} 
+                  src={perfilMariobros} 
                   alt="Foto de perfil" 
                   className="w-full h-full object-cover rounded-lg"
+                  loading="lazy"    // ✅ Lazy loading para optimizar rendimiento
                 />
               </div>
 
@@ -102,13 +115,16 @@ const Perfil = () => {
               <span className="text-lg font-semibold">Fondo de Pantalla</span>
               <div className="w-[200px] h-[200px] rounded-lg bg-blue-500 flex justify-center items-center">
                 <img 
-                  src={fondoBosque} 
+                  src={fondos[fondoIndex]}
                   alt="Foto de fondo" 
                   className="w-full h-full object-cover rounded-lg"
+                  loading="lazy"    // ✅ Lazy loading
                 />
               </div>
 
-              <button className="bg-[#6a35ad] text-white px-6 py-2 rounded-md hover:bg-[#4a1c85] transition w-full">
+              <button 
+              className="bg-[#6a35ad] text-white px-6 py-2 rounded-md hover:bg-[#4a1c85] transition w-full"
+              onClick={() => cambiarFondo()}>
                 Cambiar
               </button>
             </div>

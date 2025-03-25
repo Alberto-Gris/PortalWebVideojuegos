@@ -7,11 +7,22 @@ import fla from '../../assets/flappy.png';
 import othello from '../../assets/othello.png'
 import styles from './Catalogo.module.css';
 
+import { useBackground } from '../BackgroundContext';
+
 const Catalogo = () => {
   const juegos = [snake, tetrix, buscaminas, fla, othello];
+  const { fondoIndex, fondos } = useBackground();
 
   return (
-    <div className={styles.container}>
+    <div
+      className="min-h-screen p-8 transition-all duration-500"
+      style={{
+        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {/* Sección de Juegos */}
       <div className={styles.seccionTitulo}>
         <div className={styles.rectangulo}></div>

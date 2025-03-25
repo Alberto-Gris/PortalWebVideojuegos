@@ -7,8 +7,11 @@ import Flappybird from './Juegos/Flappybird';
 import Buscaminas from './Juegos/Buscaminas';
 import Othello from './Juegos/Othello';
 
+import { useBackground } from './BackgroundContext';
+
 const Juego = () => {
   const { id } = useParams<{ id: string }>();
+  const { fondoIndex, fondos } = useBackground();
 
   // Función para seleccionar el juego basado en el ID
   const renderGame = () => {
@@ -29,7 +32,15 @@ const Juego = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div
+      className="min-h-screen p-8 flex justify-center items-center transition-all duration-500"
+      style={{
+        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {renderGame()}
     </div>
   );
