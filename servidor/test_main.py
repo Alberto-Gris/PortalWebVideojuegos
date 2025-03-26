@@ -1,5 +1,8 @@
 import pytest
 import main
 
-def test_verify_password():
+def test_verify_password_correcta():
     assert main.verify_password("hola123", "$2b$12$7lWPdiKAltf4c3DxL55iDeYtqweHd/BZsw97B3FlB1iK2Wb2SqgF6") == True
+
+def test_verify_password_incorrecta():
+    assert main.verify_password("ContraseñaIncorrecta", "$2b$12$7lWPdiKAltf4c3DxL55iDeYtqweHd/BZsw97B3FlB1iK2Wb2SqgF6") == False
