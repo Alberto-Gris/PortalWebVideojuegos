@@ -12,13 +12,19 @@ const Navbar = () => {
 
       {/* Links */}
       <div className="flex space-x-6 text-white font-semibold">
-        <Link to="/" className="hover:underline">Inicio</Link>
-        <Link to="/catalogo" className="hover:underline">Catalogo</Link>
-        <Link to="/ayuda" className="hover:underline">Ayuda</Link>
+        <Link to="/" className="hover:underline">
+          Inicio
+        </Link>
+        <Link to="/catalogo" className="hover:underline">
+          Catalogo
+        </Link>
+        <Link to="/ayuda" className="hover:underline">
+          Ayuda
+        </Link>
       </div>
 
       {/* User Icon */}
-      <Link to="/perfil">
+      <Link to="/login">
         <FaUserCircle className="text-white text-2xl" />
       </Link>
     </nav>
