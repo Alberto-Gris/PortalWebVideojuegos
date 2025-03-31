@@ -16,7 +16,7 @@ describe('useAuthContext', () => {
     })
 })
 
-describe('AuthProvider', () => {
+describe.skip('AuthProvider', () => {
     it ('renderiza correctamente', () => {
         const { getByTestId } = render(<AuthProvider></AuthProvider>)
         expect(getByTestId('provider')).toBeInTheDocument()

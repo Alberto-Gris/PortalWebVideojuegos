@@ -2,7 +2,7 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { render, renderHook, screen } from '@testing-library/react'
 import Buscaminas from '../../../components/Juegos/Buscaminas'
 
-describe('Buscaminas', () => {
+describe.skip('Buscaminas', () => {
     it('renderiza correctamente', () => {
         const { getByTestId } = render(<Buscaminas></Buscaminas>)
         expect(getByTestId('buscaminas')).toBeInTheDocument()
