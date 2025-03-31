@@ -6,7 +6,7 @@ import RouterIndex from "./routes/IndexRoutes";
 
 const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
   const { fondoIndex, fondos } = useBackground();
-  const location = useLocation(); // 👈 Obtener la ruta actual
+  const location = useLocation();
 
   const excludeBackground = location.pathname === "/buscaminas";
 
