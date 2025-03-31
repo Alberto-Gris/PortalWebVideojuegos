@@ -6,15 +6,12 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between bg-gradient-to-r from-black to-purple-800 p-4">
       {/* Logo */}
-      <Link to="/">
+      <Link to="/catalogo">
         <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
       </Link>
 
       {/* Links */}
       <div className="flex space-x-6 text-white font-semibold">
-        <Link to="/" className="hover:underline">
-          Inicio
-        </Link>
         <Link to="/catalogo" className="hover:underline">
           Catalogo
         </Link>
