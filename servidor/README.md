@@ -71,7 +71,7 @@ pip install pytest
 Una vez que hayas instalado todas las dependencias, puedes ejecutar el servidor el siguiente comando:
 
 ```bash
-uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 - **main:app** : Esto le indica a uvicorn que busque la instancia de la aplicación FastAPI en el archivo main.py y que use la variable app.
 - **--host 127.0.0.1** : Establece que el servidor escuche en localhost, lo cual es adecuado para desarrollo local.
