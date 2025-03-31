@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useBackground } from "./BackgroundContext";
+import styles from "./ayuda.module.css";  // Importar el módulo CSS
 
 const preguntas = [
   {
@@ -36,15 +37,15 @@ const preguntas = [
 
 const Ayuda = () => {
   const { fondoIndex, fondos } = useBackground();
-  const [activo, setActivo] = useState(null);
+  const [activo, setActivo] = useState<number | null>(null);
 
-  const togglePregunta = (index: any) => {
+  const togglePregunta = (index: number) => {
     setActivo(activo === index ? null : index);
   };
 
   return (
     <div
-      className="min-h-screen p-8 flex justify-center items-center transition-all duration-500"
+      className={styles.contenedor}
       style={{
         backgroundImage: `url(${fondos[fondoIndex]})`,
         backgroundSize: "cover",
@@ -52,20 +53,22 @@ const Ayuda = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
-        <h1 className="text-2xl font-bold mb-4 text-center">Centro de Ayuda</h1>
-        <div>
+      <div className={styles.cajaAyuda}>
+        <h1 className={styles.titulo}>Centro de Ayuda</h1>
+        <div className={styles.preguntas}>
           {preguntas.map((item, index) => (
-            <div key={index} className="mb-4 border-b">
+            <div key={index} className={styles.bloquePregunta}>
               <button
                 onClick={() => togglePregunta(index)}
-                className="w-full text-left font-semibold text-lg p-2 focus:outline-none flex justify-between cursor-pointer"
+                className={styles.botonPregunta}
               >
                 {item.pregunta}
-                <span>{activo === index ? "▲" : "▼"}</span>
+                <span className={styles.indicador}>
+                  {activo === index ? "▲" : "▼"}
+                </span>
               </button>
               {activo === index && (
-                <p className="p-2 text-gray-700">{item.respuesta}</p>
+                <p className={styles.respuesta}>{item.respuesta}</p>
               )}
             </div>
           ))}
