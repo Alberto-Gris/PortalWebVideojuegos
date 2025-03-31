@@ -1,17 +1,21 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { BackgroundProvider } from "./components/BackgroundProvider";
 import { useBackground } from "./components/BackgroundContext";
 import RouterIndex from "./routes/IndexRoutes";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
   const { fondoIndex, fondos } = useBackground();
+  const location = useLocation();
+
+  const excludeBackground = location.pathname === "/buscaminas";
 
   return (
     <div
       className="min-h-screen transition-all duration-500"
       style={{
-        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundImage: excludeBackground ? "none" : `url(${fondos[fondoIndex]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -25,12 +29,14 @@ const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
 function App() {
   return (
     <BackgroundProvider>
-      <Router>
-        <Navbar />
-        <LayoutWithBackground>
-          <RouterIndex />
-        </LayoutWithBackground>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <LayoutWithBackground>
+            <RouterIndex />
+          </LayoutWithBackground>
+        </Router>
+      </AuthProvider>
     </BackgroundProvider>
   );
 }

@@ -1,4 +1,3 @@
-// IndexRoutes.tsx
 import { Routes, Route } from "react-router-dom";
 import Catalogo from "../components/Catalogo/Catalogo";
 import Home from "../components/Home";
@@ -7,6 +6,7 @@ import Juego from "../components/Juego";
 import Tutorial from "../components/Tutorial";
 import Perfil from "../components/Perfil";
 import LoginPage from "../components/LoginPage";
+import Buscaminas from "../components/Juegos/buscaminas/buscaminas"; 
 
 function IndexRoutes() {
   return (
@@ -18,6 +18,7 @@ function IndexRoutes() {
       <Route path="/tutorial/:id" element={<Tutorial />} />
       <Route path="/ayuda" element={<Ayuda />} />
       <Route path="/perfil" element={<Perfil />} />
+      <Route path="/buscaminas" element={<Buscaminas />} /> 
     </Routes>
   );
 }

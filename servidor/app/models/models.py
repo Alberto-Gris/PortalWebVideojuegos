@@ -26,7 +26,6 @@ class Game(Base):
     # Relación con misiones
     missions = relationship("Mission", back_populates="game")
 
-
 # Modelo de Misiones
 class Mission(Base):
     __tablename__ = "missions"
@@ -40,7 +39,6 @@ class Mission(Base):
     game = relationship("Game", back_populates="missions")
     progress = relationship("Progress", back_populates="mission")
 
-
 # Modelo de Progreso de Misiones
 class Progress(Base):
     __tablename__ = "progress"
@@ -53,3 +51,16 @@ class Progress(Base):
 
     user = relationship("User")
     mission = relationship("Mission", back_populates="progress")
+
+
+class UserBackground(Base):
+    __tablename__ = "user_backgrounds"
+
+    id_usuario = Column(Integer, ForeignKey("users.id_usuario"), primary_key=True)
+    id_fondo = Column(Integer)
+
+class UserImagePerfil(Base):
+    __tablename__ = "user_image_perfil"
+
+    id_usuario = Column(Integer, ForeignKey("users.id_usuario"), primary_key=True)
+    id_imagen = Column(Integer)

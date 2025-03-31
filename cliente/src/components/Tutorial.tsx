@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 
 // Importa tus componentes de tutorial
 import SnakeT from '../components/Tutoriales/SnakeT';
+import TetrixT from './Tutoriales/TetrixT';
+import BuscaminasT from './Tutoriales/BuscaminasT';
+import FlappyT from './Tutoriales/FlappyT';
+import OthelloT from './Tutoriales/OthelloT';
 
 const Tutorial = () => {
   const { id } = useParams<{ id: string }>();
@@ -12,6 +16,14 @@ const Tutorial = () => {
     switch(id) {
       case '1':
         return <SnakeT />;
+      case '2':
+        return <TetrixT />;
+      case '3':
+        return <BuscaminasT />;
+      case '4':
+        return <FlappyT />;
+      case '5':
+        return <OthelloT />;
       default:
         return <div>Tutorial no encontrado</div>;
     }

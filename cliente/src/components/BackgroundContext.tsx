@@ -4,6 +4,7 @@ import { createContext, useContext } from 'react';
 interface BackgroundContextType {
     fondoIndex: number;
     cambiarFondo: () => void;
+    cargarFondo: (id_fondo: number) => void;
     fondos: string[];
 }
 

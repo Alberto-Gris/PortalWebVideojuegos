@@ -10,8 +10,11 @@ const Tetris = () => {
 
       {/* Sección de la imagen y la descripción */}
       <div className={styles.contenido}>
-        {/* Enlace a la URL donde está el juego */}
-        <a href="http://localhost:5173/catalogo" target="_blank" rel="noopener noreferrer" className={styles.imagenContainer} data-testid='tetrisImg'>
+      <a 
+          href="/src/components/Juegos/tetris/tetris.html"
+          rel="noopener noreferrer"
+          className={styles.imagenContainer} data-testid='tetrisImg'
+        >
           <img src={tetris} alt="Tetris" className={styles.imagenSnake} />
           <BsPlayCircle className={styles.playIcon} size={80} color="Red" />
         </a>

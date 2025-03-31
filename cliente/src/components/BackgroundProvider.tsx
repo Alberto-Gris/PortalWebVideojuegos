@@ -28,12 +28,36 @@ export const BackgroundProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('selectedBackgroundIndex', fondoIndex.toString());
     }, [fondoIndex]);
 
-    const cambiarFondo = () => {
+    const cambiarFondo = async () => {
         setFondoIndex((prevIndex) => (prevIndex + 1) % fondos.length);
+        const user_id = parseInt(localStorage.getItem('id_usuario') || '0');
+        try {
+            const response = await fetch("http://127.0.0.1:8000/update_background/", {
+                method: "PUT",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ user_id, background_id: (fondoIndex + 1) % fondos.length }),
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error:', errorData);
+            } else {
+                console.log('Fondo actualizado correctamente');
+            }
+        } catch (error) {
+            console.error('Error al actualizar el fondo:', error);
+        }
+    };
+
+
+    //Carga el fondo inicial al cargar la página
+    const cargarFondo = (id_fondo: number) => {
+        setFondoIndex(id_fondo);
     };
 
     return (
-        <BackgroundContext.Provider value={{ fondoIndex, cambiarFondo, fondos }}>
+        <BackgroundContext.Provider value={{ fondoIndex, cambiarFondo, cargarFondo, fondos }}>
             {children}
         </BackgroundContext.Provider>
     );
