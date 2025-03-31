@@ -1,10 +1,60 @@
+import { useEffect, useState } from 'react';
+
 import { useBackground } from './BackgroundContext';
 
-import perfilMariobros from '../assets/perfilMariobros.png';
+import perfil1 from '../assets/perfil1.jpg';
+import perfil2 from '../assets/perfil2.jpg';
+import perfil3 from '../assets/perfil3.jpg';
+import perfil4 from '../assets/perfil4.jpg';
+import perfil5 from '../assets/perfil5.jpg';
+import perfil6 from '../assets/perfil6.jpg';
+import perfil7 from '../assets/perfil7.jpg';
 
-const Perfil = () => {
+
+export const Perfil = () => {
 
   const { fondoIndex, cambiarFondo, fondos } = useBackground();
+
+  const perfiles = [
+    perfil1,
+    perfil2,
+    perfil3,
+    perfil4,
+    perfil5,
+    perfil6,
+    perfil7
+  ];
+
+  const initialIndex = parseInt(localStorage.getItem('selectedBackgroundIndex') || '0');
+  const [perfilIndex, setPerfilIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    const id_perfil = parseInt(localStorage.getItem('id_perfil') || '0');
+    setPerfilIndex(id_perfil);
+  } , []);
+
+  const cambiarPerfil = async () => {
+      setPerfilIndex((prevIndex) => (prevIndex + 1) % perfiles.length);
+      const user_id = parseInt(localStorage.getItem('id_usuario') || '0');
+      try {
+        const response = await fetch("http://127.0.0.1:8000/update_perfil/", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ user_id, image_id: (perfilIndex + 1) % perfiles.length }),
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error:', errorData);
+        } else {
+            console.log('Foto de perfill actualizada correctamente');
+        }
+      } catch (error) {
+          console.error('Error al actualizar la foto de perfil:', error);
+      }
+  };
+
 
   return (
     <div
@@ -98,14 +148,16 @@ const Perfil = () => {
               <span className="text-lg font-semibold">Foto de Perfil</span>
               <div className="w-[200px] h-[200px] rounded-lg bg-blue-500 flex justify-center items-center">
                 <img 
-                  src={perfilMariobros} 
+                  src={perfiles[perfilIndex]}
                   alt="Foto de perfil" 
                   className="w-full h-full object-cover rounded-lg"
                   loading="lazy"    // ✅ Lazy loading para optimizar rendimiento
                 />
               </div>
 
-              <button className="bg-[#6a35ad] text-white px-6 py-2 rounded-md hover:bg-[#4a1c85] transition w-full">
+              <button 
+              className="bg-[#6a35ad] text-white px-6 py-2 rounded-md hover:bg-[#4a1c85] transition w-full"
+              onClick={() => cambiarPerfil()}>
                 Cambiar
               </button>
             </div>
