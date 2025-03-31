@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(172, 172, 172);
+}
+
+.tablero {
+	background: rgba(0, 0, 0, 1);
+	border: solid 1px black;
+    display: block;
+    margin: 0 50%;
+}
+
+.datos {
+    background: rgba(76, 72, 72, 1);
+}
+
+.col {
+    float: left;
+    padding: 10px;
+}
+
+.right {
+    width: 20%;
+    text-align: left ;
+}
+
+.mid {
+    width: 70%;
+}
+
+.fila:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Estilo para el botón de regreso */
+.back-button {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: #ff5733;
+	/* Rojo anaranjado */
+	color: white;
+	border: none;
+	padding: 12px 24px;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	/* Sombra para dar un efecto 3D */
+}
+
+/* Efecto de hover para el botón */
+.back-button:hover {
+	background-color: #d9534f;
+	/* Un rojo más oscuro */
+	transform: translateY(-3px);
+	/* Eleva el botón */
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	/* Aumenta la sombra */
+}
