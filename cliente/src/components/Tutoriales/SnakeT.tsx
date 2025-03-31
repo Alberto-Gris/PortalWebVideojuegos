@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SnakeT = () => {
     return (
-      <div style={gameContainerStyle}>
+      <div style={gameContainerStyle} data-testid='snakeT'>
         <div style={buttonContainerStyle}>
           <Link to="/catalogo" style={buttonStyle}>
             Ir al Catálogo

@@ -4,7 +4,7 @@ import { BsPlayCircle } from 'react-icons/bs';
 
 const Tetris = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid='tetris'>
       {/* Título */}
       <h1 className={styles.titulo}>👾 TETRIS <span className={styles.icono}>🎮</span></h1>
 
@@ -13,13 +13,13 @@ const Tetris = () => {
       <a 
           href="/src/components/Juegos/tetris/tetris.html"
           rel="noopener noreferrer"
-          className={styles.imagenContainer}
+          className={styles.imagenContainer} data-testid='tetrisImg'
         >
           <img src={tetris} alt="Tetris" className={styles.imagenSnake} />
           <BsPlayCircle className={styles.playIcon} size={80} color="Red" />
         </a>
 
-        <div className={styles.descripcionBox}>
+        <div className={styles.descripcionBox} data-testid='tetrisDesc'>
           <h2>Descripción:</h2>
           <p>¡Bienvenido al clásico Tetris! Un juego de lógica donde debes encajar piezas de diferentes formas que caen desde la parte superior.</p>
           

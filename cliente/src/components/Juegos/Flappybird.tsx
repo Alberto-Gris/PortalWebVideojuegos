@@ -4,19 +4,19 @@ import { BsPlayCircle } from 'react-icons/bs';
 
 const Flappybird = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid='flappybird'>
       <h1 className={styles.titulo}>🐦‍⬛ Flappy Bird <span className={styles.icono}>🎮</span></h1>
       <div className={styles.contenido}>
         <a 
           href="/src/components/Juegos/flappybird/flappybird.html"
           rel="noopener noreferrer"
-          className={styles.imagenContainer}
+          className={styles.imagenContainer} data-testid='flappybirdImg'
         >
           <img src={flappy} alt="Flappy Bird" className={styles.imagenSnake} />
           <BsPlayCircle className={styles.playIcon} size={80} color="Red" />
         </a>
 
-        <div className={styles.descripcionBox}>
+        <div className={styles.descripcionBox} data-testid='flappybirdDesc'>
           <h2>Descripción:</h2>
           <p>¡Bienvenido a Flappy Bird! Ayuda a este pequeño pájaro a volar lo más lejos posible mientras esquivas los obstáculos.</p>
           

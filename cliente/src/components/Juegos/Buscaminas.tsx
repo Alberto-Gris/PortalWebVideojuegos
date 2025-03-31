@@ -6,18 +6,18 @@ import { BsPlayCircle } from "react-icons/bs";
 const Buscaminas = () => {
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid='buscaminas'>
       <h1 className={styles.titulo}>
         💥 Buscaminas <span className={styles.icono}>🎮</span>
       </h1>
 
       <div className={styles.contenido}>
-        <Link to="/buscaminas" className={styles.imagenContainer}>
+        <Link to="/buscaminas" className={styles.imagenContainer} data-testid='buscaminasImg'>
           <img src={busca} alt="Buscaminas" className={styles.imagenSnake} />
           <BsPlayCircle className={styles.playIcon} size={80} color="Red" />
         </Link>
 
-        <div className={styles.descripcionBox}>
+        <div className={styles.descripcionBox} data-testid='buscaminasDesc'>
           <h2>Descripción:</h2>
           <p>¡Pon a prueba tu lógica en el clásico juego de Buscaminas! Descubre las celdas vacías y evita detonar las minas escondidas en el tablero.</p>
           <ul>

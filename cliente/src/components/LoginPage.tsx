@@ -27,14 +27,14 @@ const LoginPage = () => {
   }*/
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-purple-300 to-blue-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-purple-300 to-blue-100" data-testid='loginPage'>
       <div className="bg-gray-200 p-8 rounded-xl shadow-lg w-96">
         {isAuthenticated ? (
           <>
             <Home></Home>
           </>
         ) : (
-          <>
+          <div data-testid='loginPageUnauth'>
             <h2 className="text-center text-2xl font-bold mb-4">
               Iniciar sesión
             </h2>
@@ -72,6 +72,7 @@ const LoginPage = () => {
               Iniciar sesión
             </div>
           </>
+
         )}
       </div>
     </div>

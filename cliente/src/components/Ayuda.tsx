@@ -45,6 +45,7 @@ const Ayuda = () => {
 
   return (
     <div
+      data-testid='ayuda'
       className={styles.contenedor}
       style={{
         backgroundImage: `url(${fondos[fondoIndex]})`,

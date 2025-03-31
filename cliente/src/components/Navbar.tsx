@@ -4,9 +4,9 @@ import logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between bg-gradient-to-r from-black to-purple-800 p-4">
+    <nav className="flex items-center justify-between bg-gradient-to-r from-black to-purple-800 p-4" data-testid='navbar'>
       {/* Logo */}
-      <Link to="/catalogo">
+      <Link to="/catalogo" data-testid='linkLogo'>
         <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
       </Link>
 
