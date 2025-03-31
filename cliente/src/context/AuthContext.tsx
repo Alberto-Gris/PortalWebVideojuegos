@@ -45,23 +45,25 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginWithEmailPassword = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/login/", {
+      const response = await fetch("http://localhost:8000/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-      });      
-  
+      });
+
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail || "Credenciales incorrectas o error en la conexión");
+        throw new Error(
+          errorData.detail || "Credenciales incorrectas o error en la conexión"
+        );
       }
-  
+
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       //const { token, user } = data;
-  
+
       //localStorage.setItem("authToken", token);
       //setUser({ name: user.name, email: user.email });
       setStatus(AuthStatus.authenticated);
@@ -71,7 +73,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       setStatus(AuthStatus.unauthenticated);
     }
   };
-   
 
   const logout = () => {
     setUser(undefined);
