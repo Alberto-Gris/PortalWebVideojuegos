@@ -6,6 +6,8 @@ import {
   useState,
 } from "react";
 
+import { useBackground } from '../components/BackgroundContext';
+
 enum AuthStatus {
   "checking" = "checking",
   "authenticated" = "authenticated",
@@ -36,6 +38,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [status, setStatus] = useState(AuthStatus.checking);
   const [user, setUser] = useState<User>();
+  const { cargarFondo } = useBackground(); // Obtiene la función cambiarFondo del contexto de fondo
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,6 +71,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       //setUser({ name: user.name, email: user.email });
       setStatus(AuthStatus.authenticated);
       console.log("estamos adentro");
+
+      const { id_fondo, id_perfil, id_usuario } = data; // Obtiene el id_fondo del objeto data
+      cargarFondo(id_fondo); // Cambia el fondo de pantalla al index recibido desde el servidor
+      localStorage.setItem("id_usuario", id_usuario); // Guarda el user_id en localStorage
+      localStorage.setItem("id_perfil", id_perfil); // Guarda el id_perfil en localStorage
+
     } catch (error) {
       console.error("Error al intentar iniciar sesión:", error);
       setStatus(AuthStatus.unauthenticated);

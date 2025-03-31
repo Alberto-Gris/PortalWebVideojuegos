@@ -30,3 +30,11 @@ class UserResponse(BaseModel):
 class LoginRequest(BaseModel):
     email: str
     password: str
+
+class UserBackgroundUpdate(BaseModel):
+    user_id: int
+    background_id: int
+
+class UserPerfilUpdate(BaseModel):
+    user_id: int
+    image_id: int

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { BackgroundProvider } from "./components/BackgroundProvider";
 import { useBackground } from "./components/BackgroundContext";
 import RouterIndex from "./routes/IndexRoutes";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
   const { fondoIndex, fondos } = useBackground();
@@ -28,12 +29,14 @@ const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
 function App() {
   return (
     <BackgroundProvider>
-      <Router>
-        <Navbar />
-        <LayoutWithBackground>
-          <RouterIndex />
-        </LayoutWithBackground>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <LayoutWithBackground>
+            <RouterIndex />
+          </LayoutWithBackground>
+        </Router>
+      </AuthProvider>
     </BackgroundProvider>
   );
 }

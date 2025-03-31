@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const { loginWithEmailPassword, isAuthenticated } = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     loginWithEmailPassword(email, password);
@@ -15,7 +16,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      //navigate("/inicio"); // Redirige a la página de inicio
+      navigate("/perfil"); // Redirige a la página de inicio
     }
   }, [isAuthenticated]);
 
