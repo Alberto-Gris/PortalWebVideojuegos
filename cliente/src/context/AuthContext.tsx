@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <>
+    <div data-testid="provider">
       <AuthContext.Provider
         value={{
           status: status,
@@ -94,6 +94,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       >
         {children}
       </AuthContext.Provider>
-    </>
+    </div>
   );
 };

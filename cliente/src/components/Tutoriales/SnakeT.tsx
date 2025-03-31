@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const SnakeT = () => {
     // Lógica del juego aquí
     return (
-      <div style={gameContainerStyle}>
+      <div style={gameContainerStyle} data-testid='snakeT'>
         <h2 style={titleStyle}>Snake</h2>
         <p>¡Hola! Este es el tutorial de Snake.</p>
       </div>

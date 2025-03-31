@@ -18,7 +18,7 @@ const Tutorial = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} data-testid='tutorial'>
       {renderTuto()}
     </div>
   );
