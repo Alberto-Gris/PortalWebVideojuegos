@@ -65,12 +65,12 @@ const LoginPage = () => {
               />
             </div>
 
-            <button
+            <div
               onClick={handleLogin}
-              className="w-full bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700"
+              className="w-full bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 cursor-pointer"
             >
               Iniciar sesión
-            </button>
+            </div>
           </>
         )}
       </div>
