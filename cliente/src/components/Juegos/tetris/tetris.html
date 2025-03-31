@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="tetris.css" rel="stylesheet" type="text/css">
+    <title>Tetris</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='/catalogo';">Salir</button>
+    
+    <div class="fila">
+        <div class="col mid">
+            <!--Cada cuadro mide 32x32-->
+            <canvas id="tablero" class="tablero" width="320" height="640">Tu navegador no soporta canvas</canvas>
+        </div>
+        <div class="col right">
+            <!--Aquí irán los datos del score, líneas eliminadas y el nivel actual-->
+            <canvas id="datos" class="datos" width="300" height="640"></canvas>
+        </div>
+    </div>
+        
+    <script type="text/javascript" src="tetris.js"></script>
+</body>
+</html>

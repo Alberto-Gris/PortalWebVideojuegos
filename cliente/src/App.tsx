@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { BackgroundProvider } from "./components/BackgroundProvider";
 import { useBackground } from "./components/BackgroundContext";
@@ -6,12 +6,15 @@ import RouterIndex from "./routes/IndexRoutes";
 
 const LayoutWithBackground = ({ children }: { children: React.ReactNode }) => {
   const { fondoIndex, fondos } = useBackground();
+  const location = useLocation();
+
+  const excludeBackground = location.pathname === "/buscaminas";
 
   return (
     <div
       className="min-h-screen transition-all duration-500"
       style={{
-        backgroundImage: `url(${fondos[fondoIndex]})`,
+        backgroundImage: excludeBackground ? "none" : `url(${fondos[fondoIndex]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
